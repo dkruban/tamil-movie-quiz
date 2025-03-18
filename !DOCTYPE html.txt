@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Movie Connections Quiz</title>
+    <style>
+        body {
+            background: url('https://source.unsplash.com/1600x900/?space,galaxy,nebula') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .question {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #ff5722;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .correct {
+            color: #4CAF50;
+        }
+        .wrong {
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tamil Movie Connections Quiz</h1>
+        <p>Guess the Tamil movie from the emoji clues!</p>
+        
+        <div id="quiz">
+            <div class="question" id="question">🕰️ 🔁 🚆</div>
+            <button class="btn" onclick="checkAnswer('Mersal')">Mersal</button>
+            <button class="btn" onclick="checkAnswer('24')">24</button>
+            <button class="btn" onclick="checkAnswer('Indru Netru Naalai')">Indru Netru Naalai</button>
+            <p class="result" id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        function playAudio(type) {
+            let audio = new Audio(type === 'correct' ? 'https://www.soundjay.com/button/sounds/button-3.mp3' : 'https://www.soundjay.com/button/sounds/button-10.mp3');
+            audio.play();
+        }
+
+        function checkAnswer(selected) {
+            let correctAnswer = "24";
+            let resultText = document.getElementById("result");
+            if (selected === correctAnswer) {
+                resultText.innerHTML = "✅ Correct! The answer is 24 (2016).";
+                resultText.className = "result correct";
+                playAudio('correct');
+            } else {
+                resultText.innerHTML = "❌ Wrong! The correct answer is 24 (2016).";
+                resultText.className = "result wrong";
+                playAudio('wrong');
+            }
+        }
+    </script>
+</body>
+</html>
